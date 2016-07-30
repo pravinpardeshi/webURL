@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<project name="webURL" basedir="." default="build">
+   <property name="src.dir" value="src"/>
+   <property name="web.dir" value="war"/>
+   <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+   <property name="name" value="fax"/>
+
+   <path id="master-classpath">
+      <fileset dir="${web.dir}/WEB-INF/lib">
+         <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+   </path>
+
+   <target name="build" description="Compile source tree java files">
+      <mkdir dir="${build.dir}"/>
+      <javac destdir="${build.dir}" source="1.5" target="1.5">
+         <src path="${src.dir}"/>
+         <classpath refid="master-classpath"/>
+      </javac>
+   </target>
+ 
+   <target name="clean" description="Clean output directories">
+      <delete>
+         <fileset dir="${build.dir}">
+            <include name="**/*.class"/>
+         </fileset>
+      </delete>
+   </target>
+
+   <target name = "generate-javadoc">
+    <javadoc packagenames="weburl.*" sourcepath="${src.dir}" 
+      destdir = "doc" version = "true" windowtitle = "webURL Application">
+      
+      <doctitle><![CDATA[= WebURL Application =]]></doctitle>
+      
+      <bottom>
+         <![CDATA[Copyright © August, 2016. All Rights Reserved.]]>
+      </bottom>
+      
+      <group title = "util packages" packages = "weburl.util.*"/>
+      <group title = "web packages" packages = "weburl.web.*"/>
+      <group title = "data packages" packages = "weburl.entity.*:weburl.dao.*"/>
+    </javadoc>
+   
+   <echo message = "java doc has been generated!" />
+   </target>
+
+   <target name="build-jar">
+    <jar destfile="${web.dir}/lib/util.jar"
+      basedir="${build.dir}/classes"
+      includes="weburl/util/**"
+      excludes="**/*.class">
+
+      <manifest>
+         <attribute name="Main-Class" value="com.jessie.util.webURL"/>
+      </manifest>
+
+    </jar>
+   </target>
+
+</project>

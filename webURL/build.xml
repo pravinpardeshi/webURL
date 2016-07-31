@@ -13,12 +13,6 @@
       <pathelement path="${build.dir}"/>
    </path>
 
-<!-- 
-  <presetdef name="javac">
-    <javac includeantruntime="false" />
-  </presetdef>
--->
-
    <target name="build" description="Compile source tree java files">
       <mkdir dir="${build.dir}"/>
       <javac destdir="${build.dir}" source="1.5" target="1.5" includeantruntime="false">

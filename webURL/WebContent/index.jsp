@@ -15,7 +15,7 @@
 <table style="width=50%">
 	<tr>
 	 <td> <b> Surrender </b> </td>
-	 <td> <img src="image/Waving_Flag.gif" alt="I Surrender" height="150" width="150"> </td> 
+	 <td> <img src="image/Waving_Flag.gif" alt="Surrendering now!" height="150" width="150"> </td> 
 	</tr>
 </table>
  

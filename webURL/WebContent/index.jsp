@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>WebURL</title>
+<title>Weburl</title>
 
 </head>
 <body>
@@ -14,8 +14,8 @@
 <body bgcolor="white">
 <table style="width=50%">
 	<tr>
-	 <td> <b> Surrender </b> </td>
-	 <td> <img src="image/Waving_Flag.gif" alt="Surrendering now!" height="150" width="150"> </td> 
+	 <td> <b> Canada </b> </td>
+	 <td> <img src="image/Waving_Flag.gif" alt="oh, Canada!" height="150" width="150"> </td> 
 	</tr>
 </table>
  

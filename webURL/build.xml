@@ -1,77 +1,47 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<project name="webURL" basedir="." default="build">
-   <property name="src.dir" value="src"/>
-   <property name="web.dir" value="war"/>
-   <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-   <property name="name" value="fax"/>
+    <project basedir="." default="build" name="weburl">
 
-   <path id="master-classpath">
-      <fileset dir="${web.dir}/WEB-INF/lib">
-         <include name="*.jar"/>
-      </fileset>
-      <pathelement path="${build.dir}"/>
-   </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="WebContent/image">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
 
-   <target name="build" description="Compile source tree java files">
-      <mkdir dir="${build.dir}"/>
-      <javac destdir="${build.dir}" source="1.5" target="1.5" includeantruntime="false">
-         <src path="${src.dir}"/>
-         <classpath refid="master-classpath"/>
-      </javac>
-   </target>
- 
-   <target name="clean" description="Clean output directories">
-      <delete>
-         <fileset dir="${build.dir}">
-            <include name="**/*.class"/>
-         </fileset>
-      </delete>
-   </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
 
-   <target name = "generate-javadoc">
-    <javadoc packagenames="weburl.*" sourcepath="${src.dir}" 
-      destdir = "doc" version = "true" windowtitle = "webURL Application">
-      
-      <doctitle><![CDATA[= WebURL Application =]]></doctitle>
-      
-      <bottom>
-         <![CDATA[Copyright © August, 2016. All Rights Reserved.]]>
-      </bottom>
-      
-      <group title = "util packages" packages = "weburl.util.*"/>
-      <group title = "web packages" packages = "weburl.web.*"/>
-      <group title = "data packages" packages = "weburl.entity.*:weburl.dao.*"/>
-    </javadoc>
-   
-   <echo message = "java doc has been generated!" />
-   </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="WebContent/image"/>
+            <classpath refid="weburl.classpath"/>
+        </javac>
+    </target>
 
-   <target name="build-jar">
-    <jar destfile="${web.dir}/lib/util.jar"
-      basedir="${build.dir}/classes"
-      includes="weburl/util/**"
-      excludes="**/*.class">
+    <war destfile="war/weburl.war" webxml="WebContent/WEB-INF/web.xml"> 
+  	<fileset dir="WebContent/image"/>
+  	<fileset dir="WebContent/META-INF"/>
+  	<fileset dir="WebContent/"/>
+  	<classes dir="build"/>
 
-      <manifest>
-         <attribute name="Main-Class" value="com.jessie.util.webURL"/>
-      </manifest>
+  	<zipfileset dir="WebContent/image/gif" prefix="image"/> 
 
-    </jar>
-   </target>
+    </war>
 
-   <target name="build-war">
-    <war destfile="weburl.war" webxml="${web.dir}/web.xml">
-      <fileset dir="${web.dir}/WebContent">
-         <include name="**/*.*"/>
-      </fileset>
-      
-      <lib dir="thirdpartyjars">
-         <exclude name="portlet.jar"/>
-      </lib>
-      
-     <classes dir="${build.dir}/web"/>
-   </war>
-   
-  </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+
 </project>

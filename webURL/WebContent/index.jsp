@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Web URL</title>
+<title>Canada Flag</title>
 
 </head>
 <body>

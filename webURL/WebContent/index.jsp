@@ -17,6 +17,9 @@
 	 <td> <b> Canada Flag </b> </td>
 	 <td> <img src="image/Waving_Flag.gif" alt="oh, Canada!" height="150" width="150"> </td> 
 	</tr>
+	<tr>
+		This is a sample row of the table.
+	</tr>
 </table>
  
 

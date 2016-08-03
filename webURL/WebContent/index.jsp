@@ -14,7 +14,7 @@
 <body bgcolor="white">
 <table style="width=75%">
 	<tr>
-	 <td> <b> Canada Flag </b> </td>
+	 <td> <b> Oh, Canada !!!  </b> </td>
 	 <td> <img src="image/Waving_Flag.gif" alt="oh, Canada!" height="150" width="150"> </td> 
 	</tr>
 	<tr>

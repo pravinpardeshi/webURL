@@ -32,7 +32,7 @@
         </javac>
     </target>
 
-    <war destfile="war/weburl.war" webxml="WebContent/WEB-INF/web.xml"> 
+    <war destfile="weburl.war" webxml="WebContent/WEB-INF/web.xml"> 
   	<fileset dir="WebContent/image"/>
   	<fileset dir="WebContent/META-INF"/>
   	<fileset dir="WebContent/"/>
